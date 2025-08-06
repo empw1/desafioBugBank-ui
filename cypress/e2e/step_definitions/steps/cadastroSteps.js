@@ -42,5 +42,5 @@ Then('o sistema informa que {string}', (mensagemSucesso) => {
   cy.get('#modalText').invoke('text').then((texto) => {
     expect(texto.startsWith(inicioEsperado)).to.be.true
     expect(texto).to.match(/^A conta \d{1,3}-\d{1,2} foi criada com sucesso$/)
-  });
+  })
 })
