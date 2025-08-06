@@ -12,11 +12,6 @@ When('informo um e-mail invalido {string}', (emailInvalido) => {
   cy.get('.card__register input[name="email"]').type(emailInvalido, { force: true })
 })
 
-Then('o sistema apresenta mensagem {string} abaixo do campo de e-mail', (mensagemErro) => {
-  cy.get('.input__warging')
-    .should('have.text', mensagemErro)
-})
-
 When('informo um e-mail valido {string}', (emailValido) => {
   cy.get('.card__register input[name="email"]').type(emailValido, { force: true })
 })
@@ -35,6 +30,11 @@ When('confirmo a senha {string}', (confirmarSenha) => {
 
 When('clico em cadastrar', () => {
   cy.get('button').contains('Cadastrar').click({ force: true })
+})
+
+Then('o sistema apresenta mensagem {string} abaixo do campo de e-mail', (mensagemErro) => {
+  cy.get('.input__warging')
+    .should('have.text', mensagemErro)
 })
 
 Then('o sistema informa que {string}', (mensagemSucesso) => {

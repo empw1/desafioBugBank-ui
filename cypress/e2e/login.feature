@@ -5,15 +5,11 @@ When um e-mail invalido "email_errado.com" é informado
 Then o sistema apresentará uma mensagem de "Formato inválido" abaixo do campo de e-mail
 
 Scenario: Logar com e-mail/senha nao cadastrados
-And informo um e-mail nao cadastrado "qaqa@test.com"
-And informo a senha "12345"
+Given que informo um e-mail nao cadastrado "rick@test.com" e a senha "12345"
 When clico em acessar 
-Then o sistema informa que "Usuário ou senha inválido. Tente novamente ou verifique suas informações!"
+Then o sistema mostra mensagem de erro "Usuário ou senha inválido. Tente novamente ou verifique suas informações!"
 
 Scenario: Logar com e-mail valido
-And informo um e-mail valido "test@test.com"
-And informo a senha "12345"
-When clico em acessar 
-Then o sistema permite o acesso
-And apresenta o nome de usuario corretamente
-And apresenta a conta correta
+Given que efetuo o cadastro e faço login
+When o sistema realiza o login com sucesso
+Then e apresenta as informações corretas do usuário "Olá Rick,"
