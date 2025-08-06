@@ -1,0 +1,10 @@
+Cypress.Commands.add('cadastrar', (nome, email, senha) => {
+  cy.visit('http://localhost:3000/')
+  cy.get('button').contains('Registrar').click({ force: true })
+  cy.get('.card__register input[name="email"]').type(email, { force: true })
+  cy.get('input[type="name"]').type(nome, { force: true })
+  cy.get('.card__register input[name="password"]').type(senha, { force: true })
+  cy.get('input[name="passwordConfirmation"]').type(senha, { force: true })
+  cy.get('button').contains('Cadastrar').click({ force: true })
+  cy.contains("#modalText").should('be.visible')
+})
