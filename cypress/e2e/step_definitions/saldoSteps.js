@@ -96,7 +96,6 @@ Given('que efetuo o cadastro sem saldo e faço login', () => {
     }
     cy.visit('/')
     cy.cadastrarUsuarioSemSaldo(usuario)
-    // Faça login se necessário após o cadastro
     cy.get('input[name="email"]').eq(0).clear({ force: true }).type(usuario.email)
     cy.get('input[name="password"]').eq(0).clear({ force: true }).type(usuario.senha)
     cy.get('button').contains('Acessar').click()
