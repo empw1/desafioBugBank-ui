@@ -14,6 +14,8 @@ module.exports = defineConfig({
     reportDir: 'cypress/results',
     overwrite: false,
     html: false,
-    json: true
+    json: true,
+    reportFilename: '[status]_[datetime]-[name]-report',
+    timestamp: 'longDate'
   }
 })
