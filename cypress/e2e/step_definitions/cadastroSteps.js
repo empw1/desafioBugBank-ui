@@ -4,10 +4,12 @@ beforeEach(() => {
   cy.visit('/')
 })
 
+// ---- Ações iniciais ----
 Given('clico em registrar', () => {
   cy.get('button').contains('Registrar').click()
 })
 
+// ---- Preenchimento de campos ----
 When('informo um e-mail invalido {string}', (emailInvalido) => {
   cy.get('.card__register input[name="email"]').type(emailInvalido, { force: true })
 })
@@ -28,10 +30,12 @@ When('confirmo a senha {string}', (confirmarSenha) => {
   cy.get('input[name="passwordConfirmation"]').type(confirmarSenha, { force: true })
 })
 
+// ---- Ações ----
 When('clico em cadastrar', () => {
   cy.get('button').contains('Cadastrar').click({ force: true })
 })
 
+// --- Validações ---
 Then('o sistema apresenta mensagem {string} abaixo do campo de e-mail', (mensagemErro) => {
   cy.get('.input__warging')
     .should('have.text', mensagemErro)
