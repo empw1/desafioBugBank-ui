@@ -3,7 +3,7 @@ const { defineConfig } = require("cypress")
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "http://localhost:3000/",
+    baseUrl: "https://bugbank.netlify.app/",
     specPattern: "cypress/e2e/**/*.feature",
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber())
