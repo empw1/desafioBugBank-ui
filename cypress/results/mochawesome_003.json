@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-07T15:40:44.843Z",
+    "end": "2025-08-07T15:40:48.834Z",
+    "duration": 3991,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "7a3f7a01-6bbb-48cd-bd7b-1b8ba7cfb05d",
+      "title": "",
+      "fullFile": "cypress\\e2e\\features\\cadastro.feature",
+      "file": "cypress\\e2e\\features\\cadastro.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c4a34c87-b170-41f3-a8fd-26ccfb0f8a0a",
+          "title": "Cadastro",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Cadastrar usuario com e-mail invalido",
+              "fullTitle": "Cadastro Cadastrar usuario com e-mail invalido",
+              "timedOut": null,
+              "duration": 2318,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {},
+              "uuid": "9c141f05-b5f8-455a-b453-1a5141e45191",
+              "parentUUID": "c4a34c87-b170-41f3-a8fd-26ccfb0f8a0a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Cadastrar usuario com e-mail válido",
+              "fullTitle": "Cadastro Cadastrar usuario com e-mail válido",
+              "timedOut": null,
+              "duration": 1622,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {},
+              "uuid": "7c8421ee-c2b1-4d46-ab83-e0f8e7ecb974",
+              "parentUUID": "c4a34c87-b170-41f3-a8fd-26ccfb0f8a0a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9c141f05-b5f8-455a-b453-1a5141e45191",
+            "7c8421ee-c2b1-4d46-ab83-e0f8e7ecb974"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3940,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

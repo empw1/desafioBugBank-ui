@@ -10,6 +10,6 @@ Feature: Login
         Then o sistema mostra mensagem de erro "Usuário ou senha inválido. Tente novamente ou verifique suas informações!"
 
     Scenario: Logar com e-mail valido
-        Given que efetuo o cadastro e faço login
+        Given que efetuo um cadastro básico e faço login
         When o usuário está logado no sistema
         Then apresenta as informações corretas do usuário "Olá Rick,"

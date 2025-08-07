@@ -1,6 +1,26 @@
 {
-  "nome": "Rick",
-  "email": "rick@teste.com",
-  "senha": "12345",
-  "confirmarSenha": "12345"
+  "usuarioBase": {
+    "nome": "Rick",
+    "email": "rick@teste.com",
+    "senha": "12345",
+    "confirmarSenha": "12345"
+  },
+  "usuarioDestino": {
+    "nome": "Usuário Destino",
+    "email": "destino@teste.com",
+    "senha": "12345",
+    "confirmarSenha": "12345"
+  },
+  "usuarioSemSaldo": {
+    "nome": "Usuário Sem Saldo", 
+    "email": "semSaldo@teste.com",
+    "senha": "12345",
+    "confirmarSenha": "12345"
+  },
+  "usuarioRemetente": {
+    "nome": "Usuário Remetente",
+    "email": "remetente@teste.com", 
+    "senha": "12345",
+    "confirmarSenha": "12345"
+  }
 }

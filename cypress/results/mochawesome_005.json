@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-07T15:41:01.670Z",
+    "end": "2025-08-07T15:41:27.453Z",
+    "duration": 25783,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8a526ac8-c4b4-4322-82d6-3257573492ee",
+      "title": "",
+      "fullFile": "cypress\\e2e\\features\\saldo.feature",
+      "file": "cypress\\e2e\\features\\saldo.feature",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a8ca4b80-274b-4a6c-bf22-88c8ef0b9737",
+          "title": "Saldo",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Transferência de valores entre contas",
+              "fullTitle": "Saldo Transferência de valores entre contas",
+              "timedOut": null,
+              "duration": 6921,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {},
+              "uuid": "afad0e5e-1c54-4493-b9d2-47fd1244330a",
+              "parentUUID": "a8ca4b80-274b-4a6c-bf22-88c8ef0b9737",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Saque de valores maiores que o saldo disponível",
+              "fullTitle": "Saldo Saque de valores maiores que o saldo disponível",
+              "timedOut": null,
+              "duration": 3801,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {},
+              "uuid": "f235d478-410b-4b57-8b6d-d6222d8e2340",
+              "parentUUID": "a8ca4b80-274b-4a6c-bf22-88c8ef0b9737",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Transferência para uma conta inexistente",
+              "fullTitle": "Saldo Transferência para uma conta inexistente",
+              "timedOut": null,
+              "duration": 4348,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {},
+              "uuid": "32fb055d-fd03-4a32-95e8-97fe9e9b9a41",
+              "parentUUID": "a8ca4b80-274b-4a6c-bf22-88c8ef0b9737",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Tentativa de saque sem saldo suficiente e verificação da mensagem de erro",
+              "fullTitle": "Saldo Tentativa de saque sem saldo suficiente e verificação da mensagem de erro",
+              "timedOut": null,
+              "duration": 3693,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {},
+              "uuid": "fafef429-6405-4098-8dbf-5004ecf3c34d",
+              "parentUUID": "a8ca4b80-274b-4a6c-bf22-88c8ef0b9737",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Verificação de saldo após transações",
+              "fullTitle": "Saldo Verificação de saldo após transações",
+              "timedOut": null,
+              "duration": 6914,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const state = window.testState;\nreturn cy\n  .then(() => state.onStartScenario(scenario, indexedSteps))\n  .then(() =>\n    resolveAndRunBeforeHooks.call(this, scenario.tags, state.feature.name)\n  )\n  .then(() =>\n    indexedSteps.forEach((step) =>\n      stepTest.call(this, state, step, rowData)\n    )\n  )\n  .then(() => state.onFinishScenario(scenario));",
+              "err": {},
+              "uuid": "a07abdb4-7ef7-4afb-8bfe-ee04b3ed3670",
+              "parentUUID": "a8ca4b80-274b-4a6c-bf22-88c8ef0b9737",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "afad0e5e-1c54-4493-b9d2-47fd1244330a",
+            "f235d478-410b-4b57-8b6d-d6222d8e2340",
+            "32fb055d-fd03-4a32-95e8-97fe9e9b9a41",
+            "fafef429-6405-4098-8dbf-5004ecf3c34d",
+            "a07abdb4-7ef7-4afb-8bfe-ee04b3ed3670"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 25677,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
