@@ -47,15 +47,14 @@ jobs:
           npx mochawesome-merge cypress/results/*.json > mochawesome.json
           npx marge mochawesome.json -f report -o ./cypress/results
 
-      - name: Upload test report artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-report
-          path: ./cypress/results/report.html
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-      - name: Deploy report to GitHub Pages
-        if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./cypress/results
+          path: ./cypress/results
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/deploy-pages@v4
