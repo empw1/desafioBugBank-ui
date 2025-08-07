@@ -10,12 +10,12 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "stepDefinitions": "cypress/e2e/step_definitions"
+  },
   "devDependencies": {
     "cypress": "^14.5.3",
     "cypress-cucumber-preprocessor": "^4.3.1"
-  },
-  "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": false,
-    "stepDefinitions": "cypress/e2e/step_definitions/steps"
   }
 }

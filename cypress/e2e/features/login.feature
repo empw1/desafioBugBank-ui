@@ -11,5 +11,5 @@ Then o sistema mostra mensagem de erro "Usuário ou senha inválido. Tente novam
 
 Scenario: Logar com e-mail valido
 Given que efetuo o cadastro e faço login
-When o sistema realiza o login com sucesso
-Then e apresenta as informações corretas do usuário "Olá Rick,"
+When o usuário está logado no sistema
+Then apresenta as informações corretas do usuário "Olá Rick,"

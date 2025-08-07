@@ -4,13 +4,10 @@ beforeEach(() => {
     cy.visit('/')
 })
 
-Given('que efetuo o cadastro e faço login', () => {
-    cy.cadastrarNovoUsuarioEFazerLogin({
-        nome: 'Rick',
-        email: 'rick@teste.com',
-        senha: '12345',
-        confirmarSenha: '12345'
-    })
+Given('que efetuo o cadastro e faço login', function () {
+  cy.fixture('usuario').then((usuario) => {
+    cy.novoCadastroELogin(usuario)
+  })
 })
 
 Given('que informo um e-mail nao cadastrado {string} e a senha {string}', (emailNaoCadastrado, senha) => {
@@ -42,11 +39,11 @@ Then('o sistema mostra mensagem de erro {string}', (mensagemErro) => {
   })
 })
 
-When('o sistema realiza o login com sucesso', () => {
+When('o usuário está logado no sistema', () => {
   cy.url().should('include', '/home')
   cy.get('#textName').should('be.visible')
 })
 
-Then('e apresenta as informações corretas do usuário {string}', (nomeUsuario) => {
+Then('apresenta as informações corretas do usuário {string}', (nomeUsuario) => {
   cy.get('#textName').should('contain.text', nomeUsuario)
 })
