@@ -4,10 +4,16 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     baseUrl: "http://localhost:3000/",
+    specPattern: "cypress/e2e/**/*.feature",
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber())
     },
-    specPattern: "cypress/e2e/**/*.feature",
-    stepDefinitions: "cypress/e2e/step_definitions/*.js"
   },
-});
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/results',
+    overwrite: false,
+    html: false,
+    json: true
+  }
+})

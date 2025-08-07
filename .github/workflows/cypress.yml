@@ -1,0 +1,56 @@
+name: Cypress Tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag do cenário (ex: @regressivo)'
+        required: false
+        default: ''
+      browser:
+        description: 'Browser (chrome|electron|firefox)'
+        required: false
+        default: 'chrome'
+  schedule:
+    - cron: '0 8 * * 1-5' # 8:00 de segunda a sexta (UTC)
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    env:
+      CYPRESS_TAG: ${{ github.event.inputs.tag }}
+      CYPRESS_BROWSER: ${{ github.event.inputs.browser }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Cypress tests
+        run: |
+          npx cypress run --browser ${{ env.CYPRESS_BROWSER }} $([ -n "${{ env.CYPRESS_TAG }}" ] && echo "--env grepTags=${{ env.CYPRESS_TAG }}")
+
+      - name: Generate HTML report
+        run: |
+          npx mochawesome-merge cypress/results/*.json > mochawesome.json
+          npx marge mochawesome.json -f report -o ./cypress/results
+
+      - name: Upload test report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-report
+          path: ./cypress/results/report.html
+
+      - name: Deploy report to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./cypress/results
