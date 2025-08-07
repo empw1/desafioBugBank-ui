@@ -5,12 +5,11 @@ beforeEach(() => {
 })
 
 // ---- Ações iniciais ----
-// RENOMEIE este step para evitar conflito
 Given('que efetuo um cadastro básico e faço login', function () {
   cy.fixture('usuario').then((usuarios) => {
     const usuarioLogin = {
       ...usuarios.usuarioBase,
-      email: `login${Date.now()}@teste.com` // Email único
+      email: `login${Date.now()}@teste.com`
     }
     cy.novoCadastroELogin(usuarioLogin)
   })
