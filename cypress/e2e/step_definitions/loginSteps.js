@@ -5,9 +5,14 @@ beforeEach(() => {
 })
 
 // ---- Ações iniciais ----
-Given('que efetuo o cadastro e faço login', function () {
-  cy.fixture('usuario').then((usuario) => {
-    cy.novoCadastroELogin(usuario)
+// RENOMEIE este step para evitar conflito
+Given('que efetuo um cadastro básico e faço login', function () {
+  cy.fixture('usuario').then((usuarios) => {
+    const usuarioLogin = {
+      ...usuarios.usuarioBase,
+      email: `login${Date.now()}@teste.com` // Email único
+    }
+    cy.novoCadastroELogin(usuarioLogin)
   })
 })
 
@@ -17,12 +22,12 @@ When('clico em acessar', () => {
 
 // ---- Preenchimento de campos ----
 Given('que informo um e-mail nao cadastrado {string} e a senha {string}', (emailNaoCadastrado, senha) => {
-  cy.get('input[name="email"]').eq(0).type(emailNaoCadastrado, { force: true })
-  cy.get('input[name="password"]').eq(0).type(senha, { force: true })
+  cy.get('input[name="email"]').eq(0).should('be.visible').clear().type(emailNaoCadastrado)
+  cy.get('input[name="password"]').eq(0).should('be.visible').clear().type(senha)
 })
 
 When('um e-mail invalido {string} é informado', (emailInvalido) => {
-  cy.get('input[name="email"]').eq(0).type(emailInvalido, { force: true })
+  cy.get('input[name="email"]').eq(0).should('be.visible').clear().type(emailInvalido)
 })
 
 And('informo um e-mail valido {string} e informo a senha {string}', (emailValido, senha) => {
@@ -32,8 +37,7 @@ And('informo um e-mail valido {string} e informo a senha {string}', (emailValido
 
 // --- Validações ---
 Then('o sistema apresentará uma mensagem de {string} abaixo do campo de e-mail', (mensagemErro) => {
-  cy.get('.input__warging')
-    .should('have.text', mensagemErro)
+  cy.get('.input__warging').should('have.text', mensagemErro)
 })
 
 Then('o sistema mostra mensagem de erro {string}', (mensagemErro) => {

@@ -2,46 +2,46 @@ import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps'
 
 //---- Cadastro ----
 Given('que existe um usuário destinatário', () => {
-    const usuarioDestino = {
-        nome: 'Usuário Destino',
-        email: `destino${Date.now()}@teste.com`,
-        senha: '12345',
-        confirmarSenha: '12345'
-    }
-    cy.visit('/')
-    cy.cadastrarUsuario(usuarioDestino)
-    cy.get('#modalText').should('be.visible').invoke('text').then((texto) => {
-        const match = texto.match(/A conta (\d+)-(\d+) foi criada/)
-        expect(match).to.not.be.null
-        Cypress.env('contaDestino', match[1])
-        Cypress.env('digitoDestino', match[2])
-        cy.get('#btnCloseModal').click()
+    cy.fixture('usuario').then((usuarios) => {
+        const usuarioDestino = {
+            ...usuarios.usuarioDestino,
+            email: `destino${Date.now()}@teste.com`
+        }
+        cy.visit('/')
+        cy.cadastrarUsuario(usuarioDestino)
+        cy.get('#modalText').should('be.visible').invoke('text').then((texto) => {
+            const match = texto.match(/A conta (\d+)-(\d+) foi criada/)
+            expect(match).to.not.be.null
+            Cypress.env('contaDestino', match[1])
+            Cypress.env('digitoDestino', match[2])
+            cy.get('#btnCloseModal').click()
+        })
     })
 })
 
 Given('que efetuo o cadastro sem saldo e faço login', () => {
-    const usuario = {
-        nome: 'Usuário Sem Saldo',
-        email: `semSaldo${Date.now()}@teste.com`,
-        senha: '12345',
-        confirmarSenha: '12345'
-    }
-    cy.visit('/')
-    cy.cadastrarUsuarioSemSaldo(usuario)
-    cy.get('input[name="email"]').eq(0).clear({ force: true }).type(usuario.email)
-    cy.get('input[name="password"]').eq(0).clear({ force: true }).type(usuario.senha)
-    cy.get('button').contains('Acessar').click()
+    cy.fixture('usuario').then((usuarios) => {
+        const usuario = {
+            ...usuarios.usuarioSemSaldo,
+            email: `semSaldo${Date.now()}@teste.com`
+        }
+        cy.visit('/')
+        cy.cadastrarUsuarioSemSaldo(usuario)
+        cy.get('input[name="email"]').eq(0).clear({ force: true }).type(usuario.email)
+        cy.get('input[name="password"]').eq(0).clear({ force: true }).type(usuario.senha)
+        cy.get('button').contains('Acessar').click()
+    })
 })
 
 Given('que efetuo o cadastro e faço login', () => {
-    const usuarioRemetente = {
-        nome: 'Usuário Remetente',
-        email: `remetente${Date.now()}@teste.com`,
-        senha: '12345',
-        confirmarSenha: '12345'
-    }
-    cy.visit('/')
-    cy.novoCadastroELogin(usuarioRemetente)
+    cy.fixture('usuario').then((usuarios) => {
+        const usuarioRemetente = {
+            ...usuarios.usuarioRemetente,
+            email: `remetente${Date.now()}@teste.com`
+        }
+        cy.visit('/')
+        cy.novoCadastroELogin(usuarioRemetente)
+    })
 })
 
 // ---- Transferência ----
