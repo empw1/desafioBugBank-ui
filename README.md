@@ -1,6 +1,7 @@
 # Desafio BugBank UI - Testes E2E com Cypress
 
 Este projeto contém a automação de testes end-to-end (E2E) para o BugBank utilizando Cypress, Cucumber e integração contínua com GitHub Actions.
+PS: A automação foi feita com base em uma aplicação do BugBank privada. 
 
 ---
 
