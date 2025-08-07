@@ -98,7 +98,7 @@ cypress.config.js                # Configuração do Cypress
 - O pipeline do GitHub Actions executa os testes automaticamente em Pull Requests, diariamente às 8h (BRT) e permite execução manual com parâmetros de tag e browser.
 - Os relatórios são publicados automaticamente no GitHub Pages após cada execução do pipeline.
 - Para rodar o pipeline manualmente, acesse a aba **Actions** no GitHub e clique em **Run workflow**.
-- Foi criada uma branch(feat-testing-with-bugbank-url), apontando para o website: https://bugbank.netlify.app/ afim de obter validar se o Action estava funcionando perfeitamente.
+- Foi criada uma branch(feat-testing-with-bugbank-url), apontando para o website: https://bugbank.netlify.app/ afim de validar se o Action estava funcionando perfeitamente.
 
 ---
 
