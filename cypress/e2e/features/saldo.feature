@@ -1,42 +1,44 @@
-Feature: Saldo
+# language: pt
 
-    Scenario: Transferência de valores entre contas
-        Given que existe um usuário destinatário
-        And que efetuo o cadastro e faço login
-        And tenho saldo disponível na conta
-        When acesso a funcionalidade de transferência
-        And informo os dados da conta de destino e o valor da transferência
-        And confirmo a transferência
-        Then devo ver uma mensagem de sucesso
-        And o valor deve ser descontado do meu saldo
+Funcionalidade: Saldo
 
-    Scenario: Saque de valores maiores que o saldo disponível
-        Given que efetuo o cadastro e faço login
-        And tenho saldo disponível na conta
-        When acesso a funcionalidade de saque
-        Then devo ver uma mensagem de funcionalidade em desenvolvimento
+Cenário: Transferência de valores entre contas
+Dado que existe um usuário destinatário
+E que efetuo o cadastro e faço login
+E tenho saldo disponível na conta
+Quando acesso a funcionalidade de transferência
+E informo os dados da conta de destino e o valor da transferência
+E confirmo a transferência
+Então devo ver uma mensagem de sucesso
+E o valor deve ser descontado do meu saldo
 
-    Scenario: Transferência para uma conta inexistente
-        Given que efetuo o cadastro e faço login
-        And tenho saldo disponível na conta
-        When acesso a funcionalidade de transferência
-        And informo os dados de uma conta inexistente e o valor da transferência
-        And confirmo a transferência
-        Then devo ver uma mensagem de erro informando que a conta não existe
+Cenário: Saque de valores maiores que o saldo disponível
+Dado que efetuo o cadastro e faço login
+E tenho saldo disponível na conta
+Quando acesso a funcionalidade de saque
+Então devo ver uma mensagem de funcionalidade em desenvolvimento
 
-    Scenario: Tentativa de saque sem saldo suficiente e verificação da mensagem de erro
-        Given que efetuo o cadastro sem saldo e faço login
-        And tenho saldo zerado na conta
-        When acesso a funcionalidade de saque
-        Then devo ver uma mensagem de funcionalidade em desenvolvimento
+Cenário: Transferência para uma conta inexistente
+Dado que efetuo o cadastro e faço login
+E tenho saldo disponível na conta
+Quando acesso a funcionalidade de transferência
+E informo os dados de uma conta inexistente e o valor da transferência
+E confirmo a transferência
+Então devo ver uma mensagem de erro informando que a conta não existe
 
-    Scenario: Verificação de saldo após transações
-        Given que existe um usuário destinatário
-        And que efetuo o cadastro e faço login
-        And tenho saldo disponível na conta
-        When acesso a funcionalidade de transferência
-        And informo os dados da conta de destino e o valor da transferência
-        And confirmo a transferência
-        Then devo ver uma mensagem de sucesso
-        And o valor deve ser descontado do meu saldo
-        And o saldo final deve refletir corretamente a transação
+Cenário: Tentativa de saque sem saldo suficiente e verificação da mensagem de erro
+Dado que efetuo o cadastro sem saldo e faço login
+E tenho saldo zerado na conta
+Quando acesso a funcionalidade de saque
+Então devo ver uma mensagem de funcionalidade em desenvolvimento
+
+Cenário: Verificação de saldo após transações
+Dado que existe um usuário destinatário
+E que efetuo o cadastro e faço login
+E tenho saldo disponível na conta
+Quando acesso a funcionalidade de transferência
+E informo os dados da conta de destino e o valor da transferência
+E confirmo a transferência
+Então devo ver uma mensagem de sucesso
+E o valor deve ser descontado do meu saldo
+E o saldo final deve refletir corretamente a transação

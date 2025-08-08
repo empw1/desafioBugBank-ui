@@ -5,16 +5,16 @@ beforeEach(() => {
 })
 
 // ---- Ações iniciais ----
-Given('clico em registrar', () => {
+Given('que clico em registrar', () => {
   cy.get('button').contains('Registrar').click()
 })
 
 // ---- Preenchimento de campos ----
-When('informo um e-mail invalido {string}', (emailInvalido) => {
+When('informo um e-mail {string}', (emailInvalido) => {
   cy.get('.card__register input[name="email"]').type(emailInvalido, { force: true })
 })
 
-When('informo um e-mail valido {string}', (emailValido) => {
+When('informo um e-mail {string}', (emailValido) => {
   cy.get('.card__register input[name="email"]').type(emailValido, { force: true })
 })
 
