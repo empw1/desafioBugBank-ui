@@ -10,20 +10,18 @@ Given('que clico em registrar', () => {
 })
 
 // ---- Preenchimento de campos ----
-When('informo um e-mail {string}', (email) => {
+When('informo um e-mail {string} e nome {string}', (email, nome) => {
   cy.get('.card__register input[name="email"]').type(email, { force: true })
-})
-
-When('informo o nome {string}', (nome) => {
   cy.get('input[type="name"]').type(nome, { force: true })
 })
 
-When('informo a senha {string}', (senha) => {
+When('informo a senha {string} e a confirmação da senha {string}', (senha, confirmarSenha) => {
   cy.get('.card__register input[name="password"]').type(senha, { force: true })
+  cy.get('input[name="passwordConfirmation"]').type(confirmarSenha, { force: true })
 })
 
-When('confirmo a senha {string}', (confirmarSenha) => {
-  cy.get('input[name="passwordConfirmation"]').type(confirmarSenha, { force: true })
+When('informo um e-mail {string}', (emailInvalido) => {
+  cy.get('.card__register input[name="email"]').type(emailInvalido, { force: true })
 })
 
 // ---- Ações ----
@@ -38,6 +36,10 @@ Then('o sistema apresenta mensagem {string} abaixo do campo de e-mail', (mensage
 
 Then('o sistema informa que {string}', (mensagemSucesso) => {
   cy.get('#modalText').invoke('text').then((texto) => {
-    expect(texto).to.match(/^A conta \d{1,3}-\d{1,2} foi criada com sucesso$/)
+    if (mensagemSucesso.includes('A conta')) {
+      expect(texto).to.match(/^A conta \d{1,3}-\d{1,2} foi criada com sucesso$/)
+    } else {
+      expect(texto).to.include(mensagemSucesso)
+    }
   })
 })
