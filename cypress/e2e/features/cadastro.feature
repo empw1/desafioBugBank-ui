@@ -9,8 +9,8 @@ Então o sistema apresenta mensagem "Formato inválido" abaixo do campo de e-mai
 
 Cenário: Cadastrar usuario com e-mail válido
 Dado que clico em registrar
-E informo um e-mail "test@test.com"
-E informo o nome "teste rick"
+E informo um e-mail "teste@teste.com"
+E informo o nome "Teste Usuario"
 E informo a senha "12345"
 E confirmo a senha "12345"
 Quando clico em cadastrar

@@ -10,12 +10,8 @@ Given('que clico em registrar', () => {
 })
 
 // ---- Preenchimento de campos ----
-When('informo um e-mail {string}', (emailInvalido) => {
-  cy.get('.card__register input[name="email"]').type(emailInvalido, { force: true })
-})
-
-When('informo um e-mail {string}', (emailValido) => {
-  cy.get('.card__register input[name="email"]').type(emailValido, { force: true })
+When('informo um e-mail {string}', (email) => {
+  cy.get('.card__register input[name="email"]').type(email, { force: true })
 })
 
 When('informo o nome {string}', (nome) => {
@@ -37,14 +33,11 @@ When('clico em cadastrar', () => {
 
 // --- Validações ---
 Then('o sistema apresenta mensagem {string} abaixo do campo de e-mail', (mensagemErro) => {
-  cy.get('.input__warging')
-    .should('have.text', mensagemErro)
+  cy.get('.input__warging').should('have.text', mensagemErro)
 })
 
 Then('o sistema informa que {string}', (mensagemSucesso) => {
-  const inicioEsperado = mensagemSucesso.split(' ')[0] + ' ' + mensagemSucesso.split(' ')[1]
   cy.get('#modalText').invoke('text').then((texto) => {
-    expect(texto.startsWith(inicioEsperado)).to.be.true
     expect(texto).to.match(/^A conta \d{1,3}-\d{1,2} foi criada com sucesso$/)
   })
 })
