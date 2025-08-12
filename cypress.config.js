@@ -8,7 +8,9 @@ module.exports = defineConfig({
     specPattern: "cypress/e2e/**/*.feature",
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber())
+      
       require('@cypress/grep/src/plugin')(config)
+      
       allureWriter(on, config)
       
       return config
@@ -16,6 +18,7 @@ module.exports = defineConfig({
   },
   env: {
     allure: true,
-    allureReuseAfterSpec: true
+    allureReuseAfterSpec: true,
+    allureResultsPath: 'allure-results'
   }
 })
