@@ -1,15 +1,18 @@
-Feature: Cadastro
+# language: pt
 
-    Scenario: Cadastrar usuario com e-mail invalido
-        Given clico em registrar
-        When informo um e-mail invalido "email_errado.com"
-        Then o sistema apresenta mensagem "Formato inválido" abaixo do campo de e-mail
+@regressivo
+Funcionalidade: Cadastro
 
-    Scenario: Cadastrar usuario com e-mail válido
-        Given clico em registrar
-        And informo um e-mail valido "test@test.com"
-        And informo o nome "teste rick"
-        And informo a senha "12345"
-        And confirmo a senha "12345"
-        When clico em cadastrar
-        Then o sistema informa que "A conta 762-4 foi criada com sucesso"
+@smoke @cadastro
+Cenário: Cadastrar usuario com e-mail invalido
+Dado que clico em registrar
+Quando informo um e-mail "email_errado.com"
+Então o sistema apresenta mensagem "Formato inválido" abaixo do campo de e-mail
+
+@regressivo @cadastro
+Cenário: Cadastrar usuario com e-mail válido
+Dado que clico em registrar
+E informo um e-mail "teste@teste.com" e nome "Teste Usuario"
+E informo a senha "12345" e a confirmação da senha "12345"
+Quando clico em cadastrar
+Então o sistema informa que "A conta 762-4 foi criada com sucesso"

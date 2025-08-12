@@ -7,11 +7,15 @@ module.exports = defineConfig({
     specPattern: "cypress/e2e/**/*.feature",
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber())
+      
+      require('@cypress/grep/src/plugin')(config)
+      
+      return config
     },
   },
   reporter: 'mochawesome',
   reporterOptions: {
-    reportDir: 'cypress/results',
+    reportDir: 'cypress/reports',
     overwrite: false,
     html: false,
     json: true,

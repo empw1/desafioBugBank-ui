@@ -5,29 +5,23 @@ beforeEach(() => {
 })
 
 // ---- Ações iniciais ----
-Given('clico em registrar', () => {
+Given('que clico em registrar', () => {
   cy.get('button').contains('Registrar').click()
 })
 
 // ---- Preenchimento de campos ----
-When('informo um e-mail invalido {string}', (emailInvalido) => {
-  cy.get('.card__register input[name="email"]').type(emailInvalido, { force: true })
-})
-
-When('informo um e-mail valido {string}', (emailValido) => {
-  cy.get('.card__register input[name="email"]').type(emailValido, { force: true })
-})
-
-When('informo o nome {string}', (nome) => {
+When('informo um e-mail {string} e nome {string}', (email, nome) => {
+  cy.get('.card__register input[name="email"]').type(email, { force: true })
   cy.get('input[type="name"]').type(nome, { force: true })
 })
 
-When('informo a senha {string}', (senha) => {
+When('informo a senha {string} e a confirmação da senha {string}', (senha, confirmarSenha) => {
   cy.get('.card__register input[name="password"]').type(senha, { force: true })
+  cy.get('input[name="passwordConfirmation"]').type(confirmarSenha, { force: true })
 })
 
-When('confirmo a senha {string}', (confirmarSenha) => {
-  cy.get('input[name="passwordConfirmation"]').type(confirmarSenha, { force: true })
+When('informo um e-mail {string}', (emailInvalido) => {
+  cy.get('.card__register input[name="email"]').type(emailInvalido, { force: true })
 })
 
 // ---- Ações ----
@@ -37,14 +31,15 @@ When('clico em cadastrar', () => {
 
 // --- Validações ---
 Then('o sistema apresenta mensagem {string} abaixo do campo de e-mail', (mensagemErro) => {
-  cy.get('.input__warging')
-    .should('have.text', mensagemErro)
+  cy.get('.input__warging').should('have.text', mensagemErro)
 })
 
 Then('o sistema informa que {string}', (mensagemSucesso) => {
-  const inicioEsperado = mensagemSucesso.split(' ')[0] + ' ' + mensagemSucesso.split(' ')[1]
   cy.get('#modalText').invoke('text').then((texto) => {
-    expect(texto.startsWith(inicioEsperado)).to.be.true
-    expect(texto).to.match(/^A conta \d{1,3}-\d{1,2} foi criada com sucesso$/)
+    if (mensagemSucesso.includes('A conta')) {
+      expect(texto).to.match(/^A conta \d{1,3}-\d{1,2} foi criada com sucesso$/)
+    } else {
+      expect(texto).to.include(mensagemSucesso)
+    }
   })
 })

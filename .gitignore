@@ -2,9 +2,12 @@
 node_modules/
 
 # Cypress
-cypress/results/
 cypress/videos/
 cypress/screenshots/
+cypress/reports/
+
+# Reports
+html-report/
 mochawesome.json
 
 # OS
