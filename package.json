@@ -12,10 +12,9 @@
     "cy:run:cadastro": "cypress run --env grepTags='@cadastro'",
     "cy:run:login": "cypress run --env grepTags='@login'",
     "cy:run:transferencia": "cypress run --env grepTags='@transferencia'",
-    "allure:generate": "allure generate allure-results --clean -o allure-report",
-    "allure:open": "allure open allure-report",
-    "allure:serve": "allure serve allure-results",
-    "test:all": "npm run cy:run && npm run allure:generate && npm run allure:open"
+    "report:merge": "mochawesome-merge cypress/reports/*.json > mochawesome.json",
+    "report:generate": "marge mochawesome.json -f report -o ./html-report",
+    "test:all": "npm run cy:run && npm run report:merge && npm run report:generate"
   },
   "keywords": [],
   "author": "",
@@ -27,9 +26,10 @@
   },
   "devDependencies": {
     "@cypress/grep": "^4.1.1",
-    "@shelex/cypress-allure-plugin": "^2.41.2",
-    "allure-commandline": "^2.34.1",
     "cypress": "^14.5.3",
-    "cypress-cucumber-preprocessor": "^4.3.1"
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "marge": "^1.0.1"
   }
 }

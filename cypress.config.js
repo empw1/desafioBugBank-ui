@@ -1,6 +1,5 @@
 const cucumber = require('cypress-cucumber-preprocessor').default
 const { defineConfig } = require("cypress")
-const allureWriter = require('@shelex/cypress-allure-plugin/writer')
 
 module.exports = defineConfig({
   e2e: {
@@ -11,14 +10,16 @@ module.exports = defineConfig({
       
       require('@cypress/grep/src/plugin')(config)
       
-      allureWriter(on, config)
-      
       return config
     },
   },
-  env: {
-    allure: true,
-    allureReuseAfterSpec: true,
-    allureResultsPath: 'allure-results'
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/reports',
+    overwrite: false,
+    html: false,
+    json: true,
+    reportFilename: '[status]_[datetime]-[name]-report',
+    timestamp: 'longDate'
   }
 })

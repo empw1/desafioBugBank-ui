@@ -4,11 +4,11 @@ node_modules/
 # Cypress
 cypress/videos/
 cypress/screenshots/
-cypress/results/
+cypress/reports/
 
-# Allure
-allure-results/
-allure-report/
+# Reports
+html-report/
+mochawesome.json
 
 # OS
 .DS_Store
