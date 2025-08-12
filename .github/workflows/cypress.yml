@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Tag do cenário (ex: @regressivo)'
+        description: 'Tag do cenário (ex: @regressivo, @smoke)'
         required: false
         default: ''
       browser:
@@ -38,22 +38,31 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline --save-dev
+
       - name: Run Cypress tests
         run: |
-          npx cypress run --browser ${{ env.CYPRESS_BROWSER }} $([ -n "${{ env.CYPRESS_TAG }}" ] && echo "--env grepTags=${{ env.CYPRESS_TAG }}")
+          if [ -n "${{ env.CYPRESS_TAG }}" ]; then
+            npx cypress run --browser ${{ env.CYPRESS_BROWSER }} --env grepTags="${{ env.CYPRESS_TAG }}"
+          else
+            npx cypress run --browser ${{ env.CYPRESS_BROWSER }}
+          fi
 
-      - name: Generate HTML report
+      - name: Generate Allure Report
+        if: always()
         run: |
-          npx mochawesome-merge cypress/results/*.json > mochawesome.json
-          npx marge mochawesome.json -f report -o ./cypress/results
+          npx allure generate allure-results --clean -o allure-report
 
       - name: Setup Pages
+        if: always()
         uses: actions/configure-pages@v4
 
       - name: Upload Pages artifact
+        if: always()
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./cypress/results
+          path: ./allure-report
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'

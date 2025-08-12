@@ -2,10 +2,13 @@
 node_modules/
 
 # Cypress
-cypress/results/
 cypress/videos/
 cypress/screenshots/
-mochawesome.json
+cypress/results/
+
+# Allure
+allure-results/
+allure-report/
 
 # OS
 .DS_Store

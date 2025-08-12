@@ -1,12 +1,15 @@
 # language: pt
 
+@regressivo
 Funcionalidade: Cadastro
 
+@smoke @cadastro
 Cenário: Cadastrar usuario com e-mail invalido
 Dado que clico em registrar
 Quando informo um e-mail "email_errado.com"
 Então o sistema apresenta mensagem "Formato inválido" abaixo do campo de e-mail
 
+@regressivo @cadastro
 Cenário: Cadastrar usuario com e-mail válido
 Dado que clico em registrar
 E informo um e-mail "teste@teste.com" e nome "Teste Usuario"
