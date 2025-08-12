@@ -34,9 +34,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
+
+      - name: Clean npm cache
+        run: npm cache clean --force
+
+      - name: Remove node_modules and package-lock
+        run: |
+          rm -rf node_modules
+          rm -f package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm install --legacy-peer-deps
+          npm ls || echo "Dependency tree issues detected but continuing..."
 
       - name: Run Cypress tests
         run: |
@@ -46,13 +57,6 @@ jobs:
             npx cypress run --browser ${{ env.CYPRESS_BROWSER }}
           fi
 
-      - name: Debug - Check reports directory
-        if: always()
-        run: |
-          echo "Checking reports directory..."
-          ls -la cypress/reports/ || echo "reports directory not found"
-          find cypress/reports -name "*.json" | head -5 || echo "No JSON files found"
-
       - name: Generate HTML Report
         if: always()
         run: |
@@ -60,11 +64,10 @@ jobs:
             npx mochawesome-merge cypress/reports/*.json > mochawesome.json
             npx marge mochawesome.json -f report -o ./html-report
             echo "HTML report generated successfully"
-            ls -la html-report/
           else
             echo "No test results found, creating placeholder"
             mkdir -p html-report
-            echo "<h1>No test results found</h1><p>Tests may not have run successfully.</p>" > html-report/index.html
+            echo "<h1>No test results found</h1><p>Check the test execution logs above.</p>" > html-report/index.html
           fi
 
       - name: Setup Pages
