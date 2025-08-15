@@ -76,9 +76,11 @@ cypress/
 │   └── step_definitions/        # Step definitions (implementação dos passos)
 ├── support/
 │   └── commands.js              # Comandos customizados do Cypress
-├── results/                     # Relatórios de execução (gerados automaticamente)
 ├── fixtures/                    # Dados de teste (usuários, mocks, etc)
+├── results/                     # Relatórios de execução (gerados automaticamente)
 cypress.config.js                # Configuração do Cypress
+package.json                     # Dependências e scripts do projeto
+README.md                        # Documentação do projeto
 .github/
 └── workflows/
     └── cypress.yml              # Pipeline CI/CD do GitHub Actions
@@ -87,9 +89,12 @@ cypress.config.js                # Configuração do Cypress
 - **features/**: Cenários de teste em Gherkin.
 - **step_definitions/**: Implementação dos passos dos cenários.
 - **support/commands.js**: Comandos customizados para facilitar os testes.
+- **fixtures/**: Dados de teste e mocks.
 - **results/**: Relatórios de execução dos testes.
 - **.github/workflows/cypress.yml**: Pipeline automatizado para rodar testes e publicar relatórios.
 - **cypress.config.js**: Configuração principal do Cypress.
+- **package.json**: Dependências e scripts do projeto.
+- **README.md**: Documentação do projeto.
 
 ---
 
@@ -98,7 +103,7 @@ cypress.config.js                # Configuração do Cypress
 - O pipeline do GitHub Actions executa os testes automaticamente em Pull Requests, diariamente às 8h (BRT) e permite execução manual com parâmetros de tag e browser.
 - Os relatórios são publicados automaticamente no GitHub Pages após cada execução do pipeline.
 - Para rodar o pipeline manualmente, acesse a aba **Actions** no GitHub e clique em **Run workflow**.
-- Foi criada uma branch(feat-testing-with-bugbank-url), apontando para o website: https://bugbank.netlify.app/ afim de validar se o Action estava funcionando perfeitamente.
+- Foi criada uma branch (feat-testing-with-bugbank-url), apontando para o website: https://bugbank.netlify.app/ afim de validar se o Action estava funcionando perfeitamente.
 
 ---
 
